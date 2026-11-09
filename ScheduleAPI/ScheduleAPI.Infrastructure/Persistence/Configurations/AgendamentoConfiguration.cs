@@ -12,13 +12,13 @@ namespace ScheduleAPI.Infrastructure.Persistence.Configurations
 
             builder.HasKey(a => a.Id);
 
-            builder.Property(a => a.Horario)
+            builder.Property(a => a.HorarioId)
                 .IsRequired();
 
             builder.Property(a => a.Observacao)
                 .HasMaxLength(200);
 
-            builder.Property(a => a.UsuarioId)
+            builder.Property(a => a.ClienteId)
                 .IsRequired();
         }
     }

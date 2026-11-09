@@ -16,4 +16,8 @@
     <ProjectReference Include="..\ScheduleAPI.Domain\ScheduleAPI.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

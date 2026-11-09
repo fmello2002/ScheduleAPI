@@ -10,7 +10,7 @@ namespace ScheduleAPI.Test
         {
             // arrange
             // act && assert
-            Assert.Throws<ArgumentException>(() => new Usuario
+            Assert.Throws<ArgumentException>(() => new Cliente
             (
                 "Felipe",
                 "123456789",
