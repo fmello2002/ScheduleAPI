@@ -6,7 +6,7 @@ namespace ScheduleAPI.Application.UseCases.Horarios
 {
     public class BuscarHorario(IHorarioRepository repository)
     {
-        public async Task<HorarioOutput> Execute(Guid id)
+        public async Task<HorarioOutput> ExecuteAsync(Guid id)
         {
             var horario = await repository.BuscarHorario(id) ?? throw new DomainException("Horário não encontrado.");
             return new HorarioOutput(horario.Id, new(horario.Dia, horario.Hora), horario.StatusHorario.ToString());

@@ -6,7 +6,7 @@ namespace ScheduleAPI.Application.UseCases
 {
     public class BuscarAtendente(IAtendenteRepository repository)
     {
-        public async Task<AtendenteOutput> Execute(Guid id)
+        public async Task<AtendenteOutput> ExecuteAsync(Guid id)
         {
             var atendente = await repository.BuscarAtendente(id) ?? throw new DomainException("Atendente não encontrado.");
             return new(atendente.Id, atendente.Nome, atendente.Telefone, atendente.Email.Value, atendente.CPF.Value);

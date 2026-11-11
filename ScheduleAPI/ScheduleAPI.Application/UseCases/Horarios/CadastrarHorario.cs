@@ -6,7 +6,7 @@ namespace ScheduleAPI.Application.UseCases.Horarios
 {
     public class CadastrarHorario(IHorarioRepository repository)
     {
-        public async Task Execute(CadastrarHorarioInput horarioInput)
+        public async Task ExecuteAsync(CadastrarHorarioInput horarioInput)
         {
             var horario = new Horario(horarioInput.Horario);
 

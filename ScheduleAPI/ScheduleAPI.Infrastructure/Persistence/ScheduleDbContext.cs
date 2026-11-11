@@ -12,6 +12,7 @@ namespace ScheduleAPI.Infrastructure.Persistence
         public DbSet<Cliente> Clientes { get; set; } = null!;
         public DbSet<Atendente> Atendentes { get; set; } = null!;
         public DbSet<Agendamento> Agendamentos { get; set; } = null!;
+        public DbSet<Solicitacao> Solicitacoes { get; set; } = null!;
         public DbSet<Horario> Horarios { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

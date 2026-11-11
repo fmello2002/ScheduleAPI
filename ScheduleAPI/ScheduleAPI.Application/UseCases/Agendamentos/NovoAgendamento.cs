@@ -5,7 +5,7 @@ namespace ScheduleAPI.Application.UseCases.Agendamentos
 {
     public class NovoAgendamento(IAgendamentoRepository agendamentoRepository, IClienteRepository usuarioRepository)
     {
-        public async Task Execute(NovoAgendamentoInput agendamentoInput)
+        public async Task ExecuteAsync(NovoAgendamentoInput agendamentoInput)
         {
             var usuario = await usuarioRepository.BuscarCliente(agendamentoInput.UsuarioId);
             if (usuario is null)

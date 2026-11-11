@@ -11,7 +11,7 @@ namespace ScheduleAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] CadastrarClienteInput cadastrarClienteInput)
         {
-            await cadastrarCliente.Execute(cadastrarClienteInput);
+            await cadastrarCliente.ExecuteAsync(cadastrarClienteInput);
 
             return Created();
         }
@@ -19,14 +19,14 @@ namespace ScheduleAPI.Controllers
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetPorIdAsync(Guid id)
         {
-            var cliente = await BuscarCliente.Execute(id);
+            var cliente = await BuscarCliente.ExecuteAsync(id);
             return Ok(cliente);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetTodosAsync()
         {
-            var clientes = await BuscarClientes.Execute();
+            var clientes = await BuscarClientes.ExecuteAsync();
             return Ok(clientes);
         }
     }

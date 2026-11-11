@@ -4,6 +4,7 @@ using ScheduleAPI.Application.UseCases;
 using ScheduleAPI.Application.UseCases.Agendamentos;
 using ScheduleAPI.Application.UseCases.Clientes;
 using ScheduleAPI.Application.UseCases.Horarios;
+using ScheduleAPI.Application.UseCases.Solicitacoes;
 using ScheduleAPI.Handlers;
 using ScheduleAPI.Infrastructure.Persistence;
 using ScheduleAPI.Infrastructure.Persistence.Repositories;
@@ -32,6 +33,13 @@ builder.Services.AddScoped<BuscarHorariosPorDia>();
 builder.Services.AddScoped<IAgendamentoRepository, AgendamentoRepository>();
 builder.Services.AddScoped<NovoAgendamento>();
 builder.Services.AddScoped<BuscarAgendamentosPorClienteId>();
+// Solicitacao
+builder.Services.AddScoped<ISolicitacaoRepository, SolicitacaoRepository>();
+builder.Services.AddScoped<NovaSolicitacao>();
+builder.Services.AddScoped<BuscarSolicitacoesPorClienteId>();
+builder.Services.AddScoped<BuscarSolicitacoesPorDia>();
+builder.Services.AddScoped<BuscarSolicitacoesPendentes>();
+builder.Services.AddScoped<AprovarSolicitacao>();
 
 // Add services to the container.
 
@@ -40,6 +48,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddExceptionHandler<DomainExceptionHandler>();
+builder.Services.AddExceptionHandler<NaoEncontradoExceptionHandler>();
+builder.Services.AddExceptionHandler<SolicitacaoExistenteExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 var app = builder.Build();

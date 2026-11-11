@@ -11,28 +11,28 @@ namespace ScheduleAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetHorarios()
         {
-            var horarios = await buscarHorarios.Execute();
+            var horarios = await buscarHorarios.ExecuteAsync();
             return Ok(horarios);
         }
 
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetHorario(Guid id)
         {
-            var horario = await buscarHorario.Execute(id);
+            var horario = await buscarHorario.ExecuteAsync(id);
             return Ok(horario);
         }
 
         [HttpGet("dia/{dia}")]
         public async Task<IActionResult> GetHorariosPorDia(DateOnly dia)
         {
-            var horarios = await buscarHorariosPorDia.Execute(dia);
+            var horarios = await buscarHorariosPorDia.ExecuteAsync(dia);
             return Ok(horarios);
         }
 
         [HttpPost]
         public async Task<IActionResult> PostHorario([FromBody] CadastrarHorarioInput input)
         {
-            await cadastrarHorario.Execute(input);
+            await cadastrarHorario.ExecuteAsync(input);
             return Created();
         }
     }

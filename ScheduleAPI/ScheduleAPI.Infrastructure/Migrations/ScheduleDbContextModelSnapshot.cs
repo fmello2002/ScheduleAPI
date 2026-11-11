@@ -125,6 +125,54 @@ namespace ScheduleAPI.Infrastructure.Migrations
 
                     b.ToTable("Horarios", (string)null);
                 });
+
+            modelBuilder.Entity("ScheduleAPI.Domain.Entities.Solicitacao", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ClienteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("HorarioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Observacao")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("HorarioId");
+
+                    b.ToTable("Solicitacoes", (string)null);
+                });
+
+            modelBuilder.Entity("ScheduleAPI.Domain.Entities.Solicitacao", b =>
+                {
+                    b.HasOne("ScheduleAPI.Domain.Entities.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ScheduleAPI.Domain.Entities.Horario", "Horario")
+                        .WithMany()
+                        .HasForeignKey("HorarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Horario");
+                });
 #pragma warning restore 612, 618
         }
     }

@@ -7,7 +7,7 @@ namespace ScheduleAPI.Application.UseCases.Clientes
 {
     public class CadastrarCliente(IClienteRepository _repository)
     {
-        public async Task Execute(CadastrarClienteInput usuarioInput)
+        public async Task ExecuteAsync(CadastrarClienteInput usuarioInput)
         {
             var email = new Email(usuarioInput.Email);
             var cpf = new CPF(usuarioInput.CPF);
